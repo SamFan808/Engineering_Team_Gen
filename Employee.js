@@ -5,13 +5,24 @@ class Employee {
     this.email = email;
     this.role = "Employee";
   }
-  getName() {}
-  getId() {}
-  getEmail() {}
-  getRole() {}
+  getName() {
+    console.log(this.name);
+  }
+  getId() {
+    console.log(this.id);
+  }
+  getEmail() {
+    console.log(this.email);
+  }
+  getRole() {
+    console.log(this.role);
+  }
 }
 
 // const employee = new Employee("Sam", 156, "sam@sam.sam");
-// console.log(employee);
+// employee.getName();
+// employee.getId();
+// employee.getEmail();
+// employee.getRole();
 
 module.exports = Employee;

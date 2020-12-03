@@ -3,17 +3,15 @@ class Employee {
     this.name = name;
     this.id = id;
     this.email = email;
-    role = "Employee";
-    console.log(role);
+    this.role = "Employee";
   }
-
-  printInfo() {
-    for (const key in this) {
-      console.log(`${key}: ${[key]}`);
-    }
-  }
+  getName() {}
+  getId() {}
+  getEmail() {}
+  getRole() {}
 }
-const employee = new Employee();
-employee.printInfo();
+
+// const employee = new Employee("Sam", 156, "sam@sam.sam");
+// console.log(employee);
 
 module.exports = Employee;

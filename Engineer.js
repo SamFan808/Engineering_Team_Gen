@@ -5,9 +5,10 @@ class Engineer extends Employee {
   constructor(github, role) {
     super(role);
     this.github = github;
-    role = "Engineer";
+    this.role = "Engineer";
   }
+  getGithub() {}
 }
 
-const engineer = new Engineer();
-engineer.printInfo();
+const engineer = new Engineer("pooptyPants");
+console.log(engineer);

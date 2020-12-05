@@ -1,7 +1,7 @@
 # Engineering Team Generator
 
 # Project Name: Engineering Team Generator
-![license badge](https://img.shields.io/static/v1?label=license&message=MIT&color=blue)
+![license badge](https://img.shields.io/static/v1?label=license&message=none&color=blue)
 
 ## Description
 
@@ -31,7 +31,7 @@ Execute from command line and enter manager information, follow prompts to enter
 
 ## License
 
-Licensed under: MIT license
+Licensed under: N?A
 
 ## Contributing
 

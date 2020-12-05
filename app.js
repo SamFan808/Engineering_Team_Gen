@@ -9,130 +9,188 @@ const OUTPUT_DIR = path.resolve(__dirname, "output");
 const outputPath = path.join(OUTPUT_DIR, "team.html");
 
 const render = require("./lib/htmlRenderer");
-const { type } = require("os");
 
-const makeEngineer = render.renderEngineer;
-const makeIntern = render.renderIntern;
-const makeManager = render.renderManager;
-const makeMain = render.renderMain;
+const teamRoster = [];
 
 // Write code to use inquirer to gather information about the development team members,
 // and to create objects for each team member (using the correct classes as blueprints!)
-const questions = () =>
+
+const managerQuestions = [
+  {
+    type: "input",
+    name: "nameManager",
+    message: "Please enter your name:",
+    validate: (response) =>
+      response === "" ? console.log("Name cannot be left blank") : true,
+  },
+  {
+    type: "input",
+    name: "idManager",
+    message: "Please enter your ID number:",
+    validate: (response) =>
+      response === "" ? console.log("ID cannot be left blank") : true,
+  },
+  {
+    type: "input",
+    name: "emailManager",
+    message: "Please enter your email address:",
+    validate: (response) =>
+      response === "" ? console.log("Email cannot be left blank") : true,
+  },
+  {
+    type: "input",
+    name: "officenumber",
+    message: "Please enter your office number:",
+    validate: (response) =>
+      response === ""
+        ? console.log("Office number cannot be left blank")
+        : true,
+  },
+];
+
+function start() {
+  console.log("Hello manager, let's make your team");
+  inquirer.prompt(managerQuestions).then(function (data) {
+    const manager = new Manager(
+      data.nameManager,
+      data.idManager,
+      data.emailManager,
+      data.officenumber
+    );
+    teamRoster.push(manager);
+    addTeam();
+  });
+}
+
+function addTeam() {
+  inquirer
+    .prompt([
+      {
+        type: "list",
+        name: "role",
+        message:
+          "Would you like to add additional team members? Choose from the following options:",
+        choices: [
+          "Engineer",
+          "Intern",
+          "I don't want to add any additional members",
+        ],
+      },
+    ])
+    .then(function (data) {
+      if (data.role === "Intern") {
+        createIntern();
+      } else if (data.role === "Engineer") {
+        createEngineer();
+      } else {
+        makeTeam();
+      }
+    });
+}
+
+function createIntern() {
+  console.log("Intern Questions");
   inquirer
     .prompt([
       {
         type: "input",
-        name: "name",
-        message: "Please enter your name",
+        name: "nameIntern",
+        message: "Please enter your name:",
         validate: (response) =>
           response === "" ? console.log("Name cannot be left blank") : true,
       },
       {
         type: "input",
-        name: "id",
-        message: "Please enter your ID number",
+        name: "idIntern",
+        message: "Please enter your ID number:",
         validate: (response) =>
           response === "" ? console.log("ID cannot be left blank") : true,
       },
       {
         type: "input",
-        name: "email",
-        message: "Please enter your email address",
+        name: "emailIntern",
+        message: "Please enter your email address:",
         validate: (response) =>
           response === "" ? console.log("Email cannot be left blank") : true,
       },
       {
-        type: "list",
-        name: "role",
-        message: "Please select an employee role from the list",
-        choices: ["Engineer", "Intern", "Manager"],
+        type: "input",
+        name: "school",
+        message:
+          "Please enter the name of the University/College that you graduated from",
+        validate: (response) =>
+          response === ""
+            ? console.log("School name cannot be left blank")
+            : true,
       },
     ])
-    .then(function ({ name, id, email, role }) {
-      switch (role) {
-        case "Intern":
-          inquirer
-            .prompt([
-              {
-                type: "input",
-                name: "school",
-                message:
-                  "Please enter the name of the University/College that you graduated from",
-                validate: (response) =>
-                  response === ""
-                    ? console.log("School name cannot be left blank")
-                    : true,
-              },
-            ])
-            .then(function ({ school }) {
-              makeIntern(name, role, email, id, school);
-              addEmployee();
-            });
-          break;
-        case "Engineer":
-          inquirer
-            .prompt([
-              {
-                type: "input",
-                name: "github",
-                message: "Please enter your GitHub user name",
-                validate: (response) =>
-                  response === ""
-                    ? console.log("GitHub user name cannot be left blank")
-                    : true,
-              },
-            ])
-            .then(function ({ github }) {
-              makeEngineer(name, id, email, github);
-              addEmployee();
-            });
-          break;
-        case "Manager":
-          inquirer
-            .prompt([
-              {
-                type: "input",
-                name: "officenumber",
-                message: "Please enter your Office number",
-                validate: (response) =>
-                  response === ""
-                    ? console.log("Office number cannot be left blank")
-                    : true,
-              },
-            ])
-            .then(function ({ officenumber }) {
-              makeManager(name, id, email, officenumber);
-              addEmployee();
-            });
-          break;
-      }
-    });
-
-function addEmployee() {
-  inquirer
-    .prompt([
-      {
-        type: "confirm",
-        name: "addemployee",
-        message: "Would you like to add another employee?",
-      },
-    ])
-    .then(function ({ addEmployee }) {
-      console.log("Add additional employees", addEmployee);
-      if (addEmployee) {
-        questions();
-      } else {
-        makeMain();
-      }
-    })
-    .catch((err) => {
-      console.log("Error adding employees", err);
-      throw err;
+    .then(function (data) {
+      const intern = new Intern(
+        data.nameIntern,
+        data.idIntern,
+        data.emailIntern,
+        data.school
+      );
+      teamRoster.push(intern);
+      addTeam();
     });
 }
 
-questions();
+function createEngineer() {
+  console.log("Engineer Questions");
+  inquirer
+    .prompt([
+      {
+        type: "input",
+        name: "nameEngineer",
+        message: "Please enter your name:",
+        validate: (response) =>
+          response === "" ? console.log("Name cannot be left blank") : true,
+      },
+      {
+        type: "input",
+        name: "idEngineer",
+        message: "Please enter your ID number:",
+        validate: (response) =>
+          response === "" ? console.log("ID cannot be left blank") : true,
+      },
+      {
+        type: "input",
+        name: "emailEngineer",
+        message: "Please enter your email address:",
+        validate: (response) =>
+          response === "" ? console.log("Email cannot be left blank") : true,
+      },
+      {
+        type: "input",
+        name: "github",
+        message: "Please enter your GitHub user name",
+        validate: (response) =>
+          response === ""
+            ? console.log("GitHub user name cannot be left blank")
+            : true,
+      },
+    ])
+    .then(function (data) {
+      const engineer = new Engineer(
+        data.nameEngineer,
+        data.idEngineer,
+        data.emailEngineer,
+        data.github
+      );
+      teamRoster.push(engineer);
+      addTeam();
+    });
+}
+// creates final html file
+function makeTeam() {
+  if (!fs.existsSync(OUTPUT_DIR)) {
+    fs.mkdirSync(OUTPUT_DIR);
+  }
+  fs.writeFileSync(outputPath, render(teamRoster), "utf8");
+}
+
+start();
 // After the user has input all employees desired, call the `render` function (required
 // above) and pass in an array containing all employee objects; the `render` function will
 // generate and return a block of HTML including templated divs for each employee!

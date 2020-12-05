@@ -15,51 +15,71 @@ const teamRoster = [];
 // Write code to use inquirer to gather information about the development team members,
 // and to create objects for each team member (using the correct classes as blueprints!)
 
-const managerQuestions = [
-  {
-    type: "input",
-    name: "nameManager",
-    message: "Please enter your name:",
-    validate: (response) =>
-      response === "" ? console.log("Name cannot be left blank") : true,
-  },
-  {
-    type: "input",
-    name: "idManager",
-    message: "Please enter your ID number:",
-    validate: (response) =>
-      response === "" ? console.log("ID cannot be left blank") : true,
-  },
-  {
-    type: "input",
-    name: "emailManager",
-    message: "Please enter your email address:",
-    validate: (response) =>
-      response === "" ? console.log("Email cannot be left blank") : true,
-  },
-  {
-    type: "input",
-    name: "officenumber",
-    message: "Please enter your office number:",
-    validate: (response) =>
-      response === ""
-        ? console.log("Office number cannot be left blank")
-        : true,
-  },
-];
+// figure out if there's a way to use a switch statement for the questions
+// number and email validation in prompts
+//
 
 function start() {
   console.log("Hello manager, let's make your team");
-  inquirer.prompt(managerQuestions).then(function (data) {
-    const manager = new Manager(
-      data.nameManager,
-      data.idManager,
-      data.emailManager,
-      data.officenumber
-    );
-    teamRoster.push(manager);
-    addTeam();
-  });
+  inquirer
+    .prompt([
+      {
+        type: "input",
+        name: "nameManager",
+        message: "Please enter your name:",
+        validate: (response) =>
+          response === "" ? console.log("Name cannot be left blank") : true,
+      },
+      {
+        type: "input",
+        name: "idManager",
+        message: "Please enter your ID number:",
+        validate: (response) => {
+          const num = response.match(/\d+$/);
+          if (num) {
+            return true;
+          } else {
+            return "ID must be a number.";
+          }
+        },
+      },
+      {
+        type: "input",
+        name: "emailManager",
+        message: "Please enter your email address:",
+        validate: (response) => {
+          const okay = response.match(/\S+@\S+\.\S+/);
+          if (okay) {
+            return true;
+          } else {
+            return "Please enter a valid email address.";
+          }
+        },
+      },
+      {
+        type: "input",
+        name: "officenumber",
+        message: "Please enter your office number:",
+        validate: (response) => {
+          const num = response.match(/\d+$/);
+          if (num) {
+            return true;
+          } else {
+            return "ID must be a number.";
+          }
+        },
+      },
+    ])
+    .then(function (data) {
+      const manager = new Manager(
+        data.nameManager,
+        data.idManager,
+        data.emailManager,
+        data.officenumber
+      );
+      teamRoster.push(manager);
+      addTeam();
+    });
 }
 
 function addTeam() {
@@ -95,23 +115,35 @@ function createIntern() {
       {
         type: "input",
         name: "nameIntern",
-        message: "Please enter your name:",
+        message: "Please enter Intern's name:",
         validate: (response) =>
           response === "" ? console.log("Name cannot be left blank") : true,
       },
       {
         type: "input",
         name: "idIntern",
-        message: "Please enter your ID number:",
-        validate: (response) =>
-          response === "" ? console.log("ID cannot be left blank") : true,
+        message: "Please enter Intern's ID number:",
+        validate: (response) => {
+          const num = response.match(/\d+$/);
+          if (num) {
+            return true;
+          } else {
+            return "ID must be a number.";
+          }
+        },
       },
       {
         type: "input",
         name: "emailIntern",
-        message: "Please enter your email address:",
-        validate: (response) =>
-          response === "" ? console.log("Email cannot be left blank") : true,
+        message: "Please enter Intern's email address:",
+        validate: (response) => {
+          const okay = response.match(/\S+@\S+\.\S+/);
+          if (okay) {
+            return true;
+          } else {
+            return "Please enter a valid email address.";
+          }
+        },
       },
       {
         type: "input",
@@ -143,28 +175,40 @@ function createEngineer() {
       {
         type: "input",
         name: "nameEngineer",
-        message: "Please enter your name:",
+        message: "Please enter Engineer's name:",
         validate: (response) =>
           response === "" ? console.log("Name cannot be left blank") : true,
       },
       {
         type: "input",
         name: "idEngineer",
-        message: "Please enter your ID number:",
-        validate: (response) =>
-          response === "" ? console.log("ID cannot be left blank") : true,
+        message: "Please enter Engineer's ID number:",
+        validate: (response) => {
+          const num = response.match(/\d+$/);
+          if (num) {
+            return true;
+          } else {
+            return "ID must be a number.";
+          }
+        },
       },
       {
         type: "input",
         name: "emailEngineer",
-        message: "Please enter your email address:",
-        validate: (response) =>
-          response === "" ? console.log("Email cannot be left blank") : true,
+        message: "Please enter Engineer's email address:",
+        validate: (response) => {
+          const okay = response.match(/\S+@\S+\.\S+/);
+          if (okay) {
+            return true;
+          } else {
+            return "Please enter a valid email address.";
+          }
+        },
       },
       {
         type: "input",
         name: "github",
-        message: "Please enter your GitHub user name",
+        message: "Please enter Engineer's GitHub user name",
         validate: (response) =>
           response === ""
             ? console.log("GitHub user name cannot be left blank")

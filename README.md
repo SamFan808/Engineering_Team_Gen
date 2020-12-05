@@ -41,10 +41,5 @@ Javascript, NodeJS, NPM Inquirer, HTML (output), NPM Jest
 
 Testing was done during development phase with NPM Jest package
 
-## Questions
+## Screenshot
 
-GitHub Repository:
-
-http://github.com/SamFan808
-
-For any questions, please contact me at N/A

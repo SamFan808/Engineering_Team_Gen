@@ -1,5 +1,3 @@
-# Engineering Team Generator
-
 # Project Name: Engineering Team Generator
 ![license badge](https://img.shields.io/static/v1?label=license&message=none&color=blue)
 

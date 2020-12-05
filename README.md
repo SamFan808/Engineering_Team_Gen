@@ -43,4 +43,4 @@ Testing was done during development phase with NPM Jest package
 
 ## Screenshot
 
-<img src="./images/Screenshot-hw10_1.png">
+<img src="./images/Screenshot hw10_1.png">

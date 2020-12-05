@@ -43,4 +43,7 @@ Testing was done during development phase with NPM Jest package
 
 ## Screenshot
 
-<img src="./images/Screenshot-hw10_1.png">
+<img src="./images/Screenshot hw10_1.png">
+<img src="./images/Screenshot hw10_2.png">
+
+Demonstration video link: https://www.youtube.com/watch?v=nM9whGYjyTI

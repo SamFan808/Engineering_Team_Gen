@@ -23,7 +23,7 @@ Node project team card generator, using user input to populate information cards
 
 ## Installation
 
-Requires npm Inquirer installation, as well as fs and path (native to NodeJS).
+````Requires NPM Inquirer installation, as well as fs and path (native to NodeJS).````
 
 ## Usage
 
@@ -33,13 +33,13 @@ Execute from command line and enter manager information, follow prompts to enter
 
 Licensed under: N?A
 
-## Contributing
+## Languages and technologies utilized
 
-None
+Javascript, NodeJS, NPM Inquirer, HTML (output), NPM Jest
 
 ## Testing
 
-None
+Testing was done during development phase with NPM Jest package
 
 ## Questions
 

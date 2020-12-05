@@ -43,7 +43,8 @@ Testing was done during development phase with NPM Jest package
 
 <img src="./images/Screenshot hw10_1.png">
 
-<img src="./images/Screenshot hw10_2.png">
 Output team.html
+<img src="./images/Screenshot hw10_2.png">
+
 
 Demonstration video link: https://www.youtube.com/watch?v=nM9whGYjyTI

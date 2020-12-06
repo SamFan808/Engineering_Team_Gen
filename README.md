@@ -17,7 +17,7 @@ Node project team card generator, using user input to populate information cards
 
 5. [Testing](#testing)
 
-6. [Questions](#questions)
+6. [Screenshot](#screenshot)
 
 ## Installation
 

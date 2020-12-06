@@ -13,7 +13,7 @@ Node project team card generator, using user input to populate information cards
 
 3. [License](#license)
 
-4. [Contributing](#contributing)
+4. [Languages and Technology Utilized](#languages and technology utilized)
 
 5. [Testing](#testing)
 

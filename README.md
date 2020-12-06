@@ -13,7 +13,7 @@ Node project team card generator, using user input to populate information cards
 
 3. [License](#license)
 
-4. [Languages and Technology Utilized](#languages)
+4. [Languages](#languages)
 
 5. [Testing](#testing)
 
@@ -31,7 +31,7 @@ Execute from command line and enter manager information, follow prompts to enter
 
 Licensed under: N?A
 
-## Languages and technologies utilized
+## Languages
 
 Javascript, NodeJS, NPM Inquirer, HTML (output), NPM Jest
 
